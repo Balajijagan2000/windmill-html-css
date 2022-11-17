@@ -1,0 +1,137 @@
+:root {
+ --bg: linear-gradient(180deg,#87CEFA 10%,rgba(255,255,255,1));
+ --wing-color: #F4F4F4;
+ --support-color: #F3E5AB;
+ --bottom-color: #443c42;
+ --motor-color: #E4E4E4;
+ --blade-size: 50px;
+ --speed: 2s;
+}
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+body {
+    margin: 0;
+    background-image: var(--bg);
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.windmill {
+
+    width: 450px;
+    height: 600px;
+    padding: 1em;
+
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+
+    position: relative;
+    
+}
+
+.propellors {
+
+    width: 350px;
+    height: 350px;
+    border-radius: 500%;
+
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    animation-name: rotate;
+    animation-duration: var(--speed);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    
+    z-index: 900;
+
+
+
+}
+.propellors::before {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: var(--wing-color);
+    align-self: center;
+    z-index: 500;
+    background-color: var(--motor-color);
+
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+
+    
+}
+.propellor {
+
+    width: 15px;
+    height: 50%;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+    
+    border-bottom-right-radius: 60%;
+    border-bottom-left-radius: 60%;
+
+    border-bottom: 50px solid transparent;
+    background-color: var(--wing-color);
+    position: absolute;
+    transform-origin: bottom;
+
+    box-shadow:inset 2px 5px 1px rgba(0,0,0,.2);
+
+    
+    
+
+}
+
+.propellor:nth-child(1) {
+
+    transform: rotate(-60deg);
+
+}
+.propellor:nth-child(2) {
+
+    transform: rotate(60deg);
+
+}
+.propellor:nth-child(3) {
+
+    transform: rotate(180deg);
+
+}
+.support {
+    height: 60%;
+    width: 20px;
+    background-color:var(--support-color);
+    position: absolute;
+    top:30%;
+    border-top-left-radius:45%;
+    border-top-right-radius:45%;
+   
+}
+.base {
+
+    width: 100px;
+    height: 35px;
+    background-color: var(--bottom-color);
+    position: absolute;
+    bottom: 5%;
+    
+}
+
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
